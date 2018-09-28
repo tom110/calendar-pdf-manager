@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <link th:href='@{css/fullcalendar.min.css}' rel='stylesheet'/>
+    <link th:href="@{css/fullcalendar.print.min.css}" rel='stylesheet' media='print'/>
+    <link th:href="@{css/bootstrap.min.css}" rel='stylesheet'/>
+    <script data-main="js/calendar-back" th:src="@{js/lib/require.js}"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+            font-size: 14px;
+        }
+
+        #calendar {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 10px;
+        }
+
+        #loading {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 模态框（Modal） -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form action="acceptService" method="post" enctype="multipart/form-data">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">请上传PDF文档</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input id="date" name="date" type="hidden" value=""/>
+                        <br/>
+                        <input id="soureFile" name="soureFile" type="file" class="form-control" placeholder="浏览"
+                               accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+                        <br/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id='calendar'></div>
+
+<div id='loading'>loading...</div>
+
+
+</body>
+</html>
